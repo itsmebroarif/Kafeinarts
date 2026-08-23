@@ -1,4 +1,4 @@
-# ☕ Kafeinarts — Landing Page
+# ☕ Kafeinarts — Latihan Landing Page
 
 ## 📌 Deskripsi 
 
