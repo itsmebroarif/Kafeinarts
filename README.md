@@ -1,13 +1,13 @@
 # ☕ Kafeinarts — Landing Page
 
-## 📌 Deskripsi Tugas
+## 📌 Deskripsi 
 
-Buat sebuah **Landing Page Kafeinarts** yang memiliki tampilan rapi, modern, dan responsif pada desktop maupun mobile.
+Repo **Landing Page Kafeinarts** yang memiliki tampilan rapi, modern, dan responsif pada desktop maupun mobile.
 
 Landing Page harus memberikan informasi mengenai **Kafeinarts**, berdasarkan materi yang terdapat pada PPT, terutama mengenai:
 
-* Siapa Kafeinarts
-* Apa yang Kafeinarts kerjakan
+* Siapa Kafeinarts 
+* Apa yang Tim Remaja Kafeinarts kerjakan
 * Layanan atau produk yang dimiliki
 * Informasi penting lainnya yang tersedia pada PPT
 * Identitas dan branding Kafeinarts
