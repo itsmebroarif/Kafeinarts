@@ -1,356 +1,52 @@
-# ☕ Kafeinarts — Latihan Landing Page
+# ☕ Kafeinarts — Landing Page (Tugas Kelompok)
 
-## 📌 Deskripsi 
+![Status](https://img.shields.io/badge/Status-Active-success)
+![Version](https://img.shields.io/badge/Version-1.0.0-blue)
+![Collaboration](https://img.shields.io/badge/Collaboration-2_Players-orange)
 
-Repo **Landing Page Kafeinarts** yang memiliki tampilan rapi, modern, dan responsif pada desktop maupun mobile.
+## 📌 Deskripsi
 
-Landing Page harus memberikan informasi mengenai **Kafeinarts**, berdasarkan materi yang terdapat pada PPT, terutama mengenai:
+Repository ini memuat source code untuk **Landing Page Kafeinarts**, yang merupakan **Tugas Utama** latihan kolaborasi pengembangan web (2-Player) Mengikuti tugas yang niat awalnya bikin di lovable tapi jadinya template. Proyek ini difokuskan pada pembuatan antarmuka yang rapi, modern, dan sepenuhnya responsif (Desktop & Mobile) menggunakan pendekatan kolaborasi tim yang terstruktur.
 
-* Siapa Kafeinarts 
-* Apa yang Tim Remaja Kafeinarts kerjakan
-* Layanan atau produk yang dimiliki
-* Informasi penting lainnya yang tersedia pada PPT
-* Identitas dan branding Kafeinarts
+Landing Page ini menerjemahkan materi dari presentasi (PPT) Kafeinarts menjadi sebuah produk digital, yang mencakup:
+- **Identitas Kafeinarts:** Siapa kami dan apa yang Tim Remaja Kafeinarts kerjakan.
+- **Layanan & Produk:** Etalase dari solusi yang ditawarkan.
+- **Branding Konsisten:** Menerapkan panduan visual, warna, dan tipografi Kafeinarts secara presisi.
 
 Pastikan struktur halaman mudah dipahami, visual konsisten, dan responsive pada berbagai ukuran layar.
 
 ---
 
 ## 🔗 Repository
-
 **GitHub Repository:**
-
-https://github.com/itsmebroarif/Kafeinarts
-
----
-
-## 👨‍💻 Developer
-
-* **Arif Permana Putrasuryana**
-
-  * https://github.com/itsmebroarif
-
-* **Mahabbatul Auliya**
-
-  * https://github.com/mhbbtuliyaa
+[https://github.com/itsmebroarif/Kafeinarts](https://github.com/itsmebroarif/Kafeinarts)
 
 ---
 
-# 🚀 Cara Memulai Project
+## 👨‍💻 Tim Pengembang (2-Player Co-op)
 
-## 1. Clone Repository
+Kolaborasi pengembangan ini dikerjakan oleh:
 
-Buka Terminal / Git Bash, kemudian jalankan:
-
-```bash
-git clone https://github.com/itsmebroarif/Kafeinarts.git
-```
-
-Masuk ke folder project:
-
-```bash
-cd Kafeinarts
-```
+| Nama | GitHub Profile | Peran / Fokus |
+| :--- | :--- | :--- |
+| **Arif Permana Putrasuryana** | [@itsmebroarif](https://github.com/itsmebroarif) | Full-stack & UI Integration |
+| **Mahabbatul Auliya** | [@mhbbtuliyaa](https://github.com/mhbbtuliyaa) | Frontend & Layouting |
 
 ---
 
-## 2. Cek Repository
+## 🗺️ Alur Kerja Kolaborasi (Git Workflow)
 
-Pastikan repository sudah berhasil di-clone:
+Untuk mencegah bentrok kode (*merge conflict*) dan menjaga kerapian *history*, kita menerapkan sistem **Feature Branching**. Jangan pernah melakukan *commit* atau *push* langsung ke branch `main`.
 
-```bash
-git status
-```
-
-Kemudian cek remote repository:
-
-```bash
-git remote -v
-```
-
-Pastikan mengarah ke:
-
+### ASCII Flowchart Workflow
 ```text
-https://github.com/itsmebroarif/Kafeinarts.git
-```
-
----
-
-# 🌿 Workflow Pengerjaan
-
-Jangan langsung mengerjakan di branch `main`.
-
-Buat branch baru terlebih dahulu.
-
-## 3. Update `main`
-
-Sebelum membuat branch:
-
-```bash
-git checkout main
-git pull origin main
-```
-
----
-
-## 4. Buat Branch Baru
-
-Gunakan nama branch yang menjelaskan pekerjaan.
-
-Contoh:
-
-```bash
-git checkout -b feat/landing-page
-```
-
-Atau jika mengerjakan bagian tertentu:
-
-```bash
-git checkout -b feat/hero-section
-```
-
-```bash
-git checkout -b feat/about-section
-```
-
-```bash
-git checkout -b feat/service-section
-```
-
-### Format Branch
-
-Gunakan format:
-
-```text
-feat/nama-fitur
-fix/nama-perbaikan
-refactor/nama-refactor
-docs/nama-dokumentasi
-```
-
-Contoh:
-
-```text
-feat/landing-page
-feat/navbar
-feat/about-kafeinarts
-fix/responsive-mobile
-fix/layout-section
-```
-
----
-
-# 💻 5. Kerjakan Task
-
-Setelah branch dibuat, mulai mengerjakan project.
-
-Contoh:
-
-```bash
-git status
-```
-
-Periksa file yang berubah:
-
-```bash
-git diff
-```
-
-Pastikan kode yang dibuat:
-
-* [ ] Mengikuti struktur project
-* [ ] Responsive
-* [ ] Tidak merusak fitur yang sudah ada
-* [ ] Tidak terdapat error di Console
-* [ ] Tidak terdapat error pada halaman
-* [ ] Tampilan desktop sudah sesuai
-* [ ] Tampilan mobile sudah sesuai
-* [ ] Menggunakan asset yang sesuai
-* [ ] Mengikuti branding Kafeinarts
-* [ ] Tidak memasukkan file yang tidak diperlukan
-
----
-
-# 💾 6. Commit Perubahan
-
-Setelah pekerjaan selesai:
-
-```bash
-git status
-```
-
-Tambahkan perubahan:
-
-```bash
-git add .
-```
-
-Kemudian commit:
-
-```bash
-git commit -m "feat: create Kafeinarts landing page"
-```
-
-Gunakan commit message yang jelas.
-
-Contoh:
-
-```bash
-git commit -m "feat: add hero section"
-```
-
-```bash
-git commit -m "feat: add about Kafeinarts section"
-```
-
-```bash
-git commit -m "fix: improve mobile responsiveness"
-```
-
----
-
-# ⬆️ 7. Push ke GitHub
-
-Push branch ke repository:
-
-```bash
-git push -u origin feat/landing-page
-```
-
-Jika menggunakan nama branch lain, sesuaikan:
-
-```bash
-git push -u origin nama-branch
-```
-
----
-
-# 🔀 8. Membuat Pull Request
-
-Setelah branch berhasil di-push:
-
-1. Buka repository GitHub.
-2. Pilih branch yang baru dibuat.
-3. Klik **Compare & pull request**.
-4. Pastikan:
-
-   * **Base:** `main`
-   * **Compare:** branch pekerjaan kamu
-5. Isi judul Pull Request.
-6. Isi deskripsi menggunakan template di bawah.
-7. Review kembali perubahan.
-8. Klik **Create Pull Request**.
-
----
-
-# 📝 Starter Pull Request
-
-Gunakan template berikut ketika membuat Pull Request:
-
-## Title
-
-```text
-feat: create Kafeinarts landing page
-```
-
-## Description
-
-```markdown
-## 📌 Summary
-
-Membuat dan mengembangkan Landing Page Kafeinarts berdasarkan materi dan informasi yang tersedia pada PPT.
-
-## ✨ Changes
-
-- Membuat struktur Landing Page Kafeinarts
-- Menambahkan section informasi Kafeinarts
-- Menambahkan informasi mengenai layanan/produk
-- Menyesuaikan tampilan dengan branding Kafeinarts
-- Membuat tampilan responsive
-- Menyesuaikan layout untuk desktop dan mobile
-
-## 🧪 Testing
-
-- [ ] Desktop
-- [ ] Tablet
-- [ ] Mobile
-- [ ] Chrome
-- [ ] Firefox
-- [ ] Edge
-- [ ] Tidak ada error pada Console
-- [ ] Tidak ada broken layout
-
-## 📸 Screenshot
-
-Tambahkan screenshot hasil implementasi di sini.
-
-## 🔗 Related Task
-
-Kafeinarts Landing Page
-
-## ✅ Checklist
-
-- [ ] Code sudah dirapikan
-- [ ] Tidak ada error
-- [ ] Responsive
-- [ ] Tidak ada file yang tidak diperlukan
-- [ ] Commit message sudah sesuai
-- [ ] Sudah melakukan testing
-- [ ] Siap untuk di-review
-```
-
----
-
-# 🔄 Workflow Singkat
-
-Untuk pengerjaan sehari-hari, gunakan alur:
-
-```bash
-git checkout main
-git pull origin main
-
-git checkout -b feat/nama-fitur
-
-# Kerjakan project...
-
-git status
-git add .
-git commit -m "feat: nama perubahan"
-
-git push -u origin feat/nama-fitur
-```
-
-Kemudian:
-
-```text
-GitHub
-  ↓
-Open Pull Request
-  ↓
-Review
-  ↓
-Request Changes / Approve
-  ↓
-Merge ke main
-```
-
----
-
-# ⚠️ Catatan
-
-**Jangan melakukan push langsung ke `main`** untuk pekerjaan fitur.
-
-Gunakan:
-
-```text
-main
- ├── feat/landing-page
- ├── feat/navbar
- ├── feat/about-section
- ├── feat/service-section
- └── fix/responsive-mobile
-```
-
-Setelah pekerjaan selesai, lakukan **Pull Request ke `main`**.
-
-Dengan workflow ini, setiap perubahan dapat di-review terlebih dahulu sebelum masuk ke branch utama. 🚀
+(Remote)  [main] -----------------------------------------------------> [main (Updated!)]
+             \                                                             ^
+(Local)       \--> [git pull origin main]                                  | (Merge setelah Review)
+                   [git checkout -b feat/nama-fitur]                       |
+                          |                                                |
+                      (Ngoding)                                            |
+                          |                                                |
+                   [git commit -m "..."]                                   |
+                          |                                                |
+(Remote)           [git push origin feat/nama-fitur] ----------------> [Pull Request]
