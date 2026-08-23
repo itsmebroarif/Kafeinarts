@@ -1,0 +1,12 @@
+# Large binaries / installers
+laragon-wamp.exe
+Arsha.zip
+*.exe
+
+# OS junk
+Thumbs.db
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
