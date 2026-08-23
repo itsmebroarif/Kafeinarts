@@ -19,5 +19,5 @@ https://github.com/itsmebroarif/Kafeinarts
 # How to use
 
 - Buka Git
-- ketik "git clone https://github.com/itsmebroarif/Kafeinarts"
+- ketik "git clone https://github.com/itsmebroarif/Kafeinarts
 - Kerjakan dari situ
