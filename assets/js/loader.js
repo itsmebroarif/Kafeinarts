@@ -35,23 +35,60 @@
     }
   }
 
-  // Render Team dari siteData (single source of truth)
+  // Render Team dari siteData - Satu Row Slider + Flip Card + Glow
   function renderTeamFromData() {
     const data = window.siteData;
     if (!data || !data.team || !data.team.members) return;
-    const grid = document.querySelector("#team .row");
-    // Jika team di-load via component, cari grid di dalam #team-root
-    const teamSection = document.getElementById("team");
-    const container = teamSection
-      ? teamSection.querySelector(".row")
-      : document.querySelector("#team-root .row");
+    const members = data.team.members;
+
+    // Update judul/subtitle
+    const titleEl = document.querySelector("#team .section-title h2");
+    const subEl = document.querySelector("#team .section-title p");
+    if (titleEl && data.team.title) titleEl.textContent = data.team.title;
+    if (subEl && data.team.subtitle) subEl.textContent = data.team.subtitle;
+
+    // Cek apakah ada swiper-wrapper (mode slider baru)
+    const swiperWrapper = document.querySelector("#team-swiper-wrapper") || document.querySelector("#team .swiper-wrapper");
+    if (swiperWrapper) {
+      swiperWrapper.innerHTML = members
+        .map(
+          (m, i) => `
+          <div class="swiper-slide" data-aos="fade-up" data-aos-delay="${m.delay}">
+            <div class="flip-card" data-index="${i}" data-name="${m.name}" data-role="${m.role}" data-img="${m.img}" tabindex="0" role="button" aria-label="Lihat detail ${m.name}">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <div class="team-portrait-img">
+                    <img src="${m.img}" alt="${m.alt}" loading="lazy">
+                    <div class="team-portrait-overlay">
+                      <h4>${m.name}</h4>
+                      <span>${m.role}</span>
+                    </div>
+                    <div class="team-portrait-zoom"><i class="bi bi-arrows-angle-expand"></i></div>
+                  </div>
+                </div>
+                <div class="flip-card-back">
+                  <h4>${m.name}</h4>
+                  <span>${m.role}</span>
+                  <p>${m.bio || "Talenta Kafeinarts yang berdedikasi untuk inovasi digital."}</p>
+                  <button class="btn-flip-close" aria-label="Kembali"><i class="bi bi-arrow-left"></i> Kembali</button>
+                  <button class="btn-flip-lightbox" style="margin-top:8px; background:transparent; border:1px solid rgba(255,255,255,0.7); color:#fff; border-radius:50px; padding:6px 14px; font-size:12px; cursor:pointer;"><i class="bi bi-zoom-in"></i> Lihat Foto</button>
+                </div>
+              </div>
+            </div>
+          </div>`
+        )
+        .join("");
+
+      // Bind flip & lightbox
+      bindFlipCards();
+      return;
+    }
+
+    // Fallback lama: grid
     const targetRow =
-      container ||
       document.querySelector("#team .row") ||
       document.querySelector("#team-root .row");
     if (!targetRow) return;
-
-    const members = data.team.members;
     targetRow.innerHTML = members
       .map(
         (m, i) => `
@@ -69,12 +106,45 @@
         </div>`,
       )
       .join("");
+  }
 
-    // Update judul/subtitle dari data jika ada
-    const titleEl = document.querySelector("#team .section-title h2");
-    const subEl = document.querySelector("#team .section-title p");
-    if (titleEl && data.team.title) titleEl.textContent = data.team.title;
-    if (subEl && data.team.subtitle) subEl.textContent = data.team.subtitle;
+  function bindFlipCards() {
+    const cards = document.querySelectorAll(".flip-card");
+    cards.forEach((card) => {
+      if (card.dataset.flipBound === "1") return;
+      card.dataset.flipBound = "1";
+      const closeBtn = card.querySelector(".btn-flip-close");
+      const lightboxBtn = card.querySelector(".btn-flip-lightbox");
+      // Klik card = flip (kecuali klik tombol close/lightbox)
+      card.addEventListener("click", (e) => {
+        if (e.target.closest(".btn-flip-close") || e.target.closest(".btn-flip-lightbox")) return;
+        card.classList.toggle("flipped");
+      });
+      card.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          card.classList.toggle("flipped");
+        }
+        if (e.key === "Escape") card.classList.remove("flipped");
+      });
+      if (closeBtn) {
+        closeBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          card.classList.remove("flipped");
+        });
+      }
+      if (lightboxBtn) {
+        lightboxBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          // Trigger lightbox dengan data card
+          const teamLightbox = document.getElementById("teamLightbox");
+          if (teamLightbox && window.openTeamLightbox) {
+            const idx = parseInt(card.getAttribute("data-index") || "0", 10);
+            window.openTeamLightbox(idx);
+          }
+        });
+      }
+    });
   }
 
   // Render Services dari data (opsional - jika ingin dinamis)
@@ -339,12 +409,16 @@
   }
 
   function initTeamLightbox() {
-    const teamCards = document.querySelectorAll(".team-portrait-card");
+    // Support both grid portrait dan slider flip-card
+    const teamCards = document.querySelectorAll(".flip-card, .team-portrait-card");
     const teamLightbox = document.getElementById("teamLightbox");
     if (!teamCards.length || !teamLightbox) return;
 
-    // Hindari double init
-    if (teamLightbox.dataset.bound === "1") return;
+    // Hindari double init - reset jika sudah ada (untuk re-render)
+    if (teamLightbox.dataset.bound === "1") {
+      // Rebuild data jika sudah bound tapi cards baru
+      teamLightbox.dataset.bound = "0";
+    }
     teamLightbox.dataset.bound = "1";
 
     const lbImg = document.getElementById("teamLightboxImg");
@@ -417,6 +491,12 @@
       document.body.classList.add("team-lightbox-open");
       if (lbClose) lbClose.focus({ preventScroll: true });
     }
+    // Expose untuk flip-card tombol Lihat Foto
+    window.openTeamLightbox = openLightbox;
+    window.closeTeamLightbox = function(){ 
+      const lb = document.getElementById("teamLightbox");
+      if(lb) { lb.classList.remove("active"); lb.setAttribute("aria-hidden","true"); document.body.classList.remove("team-lightbox-open"); }
+    };
     function closeLightbox() {
       teamLightbox.classList.remove("active");
       teamLightbox.setAttribute("aria-hidden", "true");

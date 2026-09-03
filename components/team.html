@@ -1,201 +1,82 @@
-<!-- Team Section -->
-      <section id="team" class="team section">
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-          <h2>Tim Kami</h2>
-          <p>
-            Kenali talenta kreatif & teknis di balik setiap inovasi Kafeinarts
-          </p>
-        </div>
-        <!-- End Section Title -->
+<!-- Team Section - Satu Row Slider + Flip Card -->
+<section id="team" class="team section">
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Tim Kami</h2>
+    <p>Kenali talenta kreatif & teknis di balik setiap inovasi Kafeinarts</p>
+  </div>
+  <!-- End Section Title -->
 
-        <div class="container">
-          <div class="row gy-4 justify-content-center">
-            <div
-              class="col-xl-3 col-lg-4 col-md-6 col-sm-6"
-              data-aos="fade-up"
-              data-aos-delay="100"
-            >
-              <div
-                class="team-portrait-card"
-                data-index="0"
-                data-name="Fahrul Saputra"
-                data-role="Chief Executive Officer"
-                data-img="assets/img/teams/1.png"
-                tabindex="0"
-                role="button"
-                aria-label="Lihat foto Fahrul Saputra"
-              >
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="swiper init-swiper team-swiper">
+      <script type="application/json" class="swiper-config">
+        {
+          "loop": true,
+          "speed": 600,
+          "autoplay": { "delay": 4000, "disableOnInteraction": false },
+          "slidesPerView": 1,
+          "spaceBetween": 24,
+          "grabCursor": true,
+          "pagination": {
+            "el": ".swiper-pagination",
+            "type": "bullets",
+            "clickable": true
+          },
+          "navigation": {
+            "nextEl": ".swiper-button-next",
+            "prevEl": ".swiper-button-prev"
+          },
+          "breakpoints": {
+            "576": { "slidesPerView": 2, "spaceBetween": 20 },
+            "768": { "slidesPerView": 3, "spaceBetween": 22 },
+            "992": { "slidesPerView": 4, "spaceBetween": 24 },
+            "1200": { "slidesPerView": 4, "spaceBetween": 24 }
+          }
+        }
+      </script>
+      <div class="swiper-wrapper" id="team-swiper-wrapper">
+        <!-- Slides akan di-inject dari assets/data/data.js via loader.js -->
+        <!-- Fallback statis (jika JS mati) - 5 flip-card -->
+        <div class="swiper-slide">
+          <div class="flip-card" tabindex="0" role="button" aria-label="Lihat detail Fahrul Saputra">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
                 <div class="team-portrait-img">
-                  <img
-                    src="assets/img/teams/1.png"
-                    alt="Fahrul Saputra - Chief Executive Officer"
-                    loading="lazy"
-                  />
-                  <div class="team-portrait-overlay">
-                    <h4>Fahrul Saputra</h4>
-                    <span>Chief Executive Officer</span>
-                  </div>
-                  <div class="team-portrait-zoom">
-                    <i class="bi bi-zoom-in"></i>
-                  </div>
+                  <img src="assets/img/teams/1.png" alt="Fahrul Saputra - Chief Executive Officer" loading="lazy" />
+                  <div class="team-portrait-overlay"><h4>Fahrul Saputra</h4><span>Chief Executive Officer</span></div>
+                  <div class="team-portrait-zoom"><i class="bi bi-zoom-in"></i></div>
                 </div>
               </div>
-            </div>
-            <!-- End Team Member -->
-
-            <div
-              class="col-xl-3 col-lg-4 col-md-6 col-sm-6"
-              data-aos="fade-up"
-              data-aos-delay="150"
-            >
-              <div
-                class="team-portrait-card"
-                data-index="1"
-                data-name="Arif Permana Putrasuryana"
-                data-role="Supervisor System Developer"
-                data-img="assets/img/teams/2.png"
-                tabindex="0"
-                role="button"
-                aria-label="Lihat foto Arif Permana Putrasuryana"
-              >
-                <div class="team-portrait-img">
-                  <img
-                    src="assets/img/teams/2.png"
-                    alt="Arif Permana Putrasuryana - Supervisor System Developer"
-                    loading="lazy"
-                  />
-                  <div class="team-portrait-overlay">
-                    <h4>Arif Permana Putrasuryana</h4>
-                    <span>Supervisor System Developer</span>
-                  </div>
-                  <div class="team-portrait-zoom">
-                    <i class="bi bi-zoom-in"></i>
-                  </div>
-                </div>
+              <div class="flip-card-back">
+                <h4>Fahrul Saputra</h4><span>Chief Executive Officer</span>
+                <p>Memimpin visi &amp; strategi Kafeinarts dengan fokus pada inovasi produk SaaS yang berdampak.</p>
+                <button class="btn-flip-close"><i class="bi bi-arrow-left"></i> Kembali</button>
               </div>
             </div>
-            <!-- End Team Member -->
-
-            <div
-              class="col-xl-3 col-lg-4 col-md-6 col-sm-6"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
-              <div
-                class="team-portrait-card"
-                data-index="2"
-                data-name="Arief Ramadhan Al-Hazmi"
-                data-role="Digital Marketer"
-                data-img="assets/img/teams/3.png"
-                tabindex="0"
-                role="button"
-                aria-label="Lihat foto Arief Ramadhan Al-Hazmi"
-              >
-                <div class="team-portrait-img">
-                  <img
-                    src="assets/img/teams/3.png"
-                    alt="Arief Ramadhan Al-Hazmi - Digital Marketer"
-                    loading="lazy"
-                  />
-                  <div class="team-portrait-overlay">
-                    <h4>Arief Ramadhan Al-Hazmi</h4>
-                    <span>Digital Marketer</span>
-                  </div>
-                  <div class="team-portrait-zoom">
-                    <i class="bi bi-zoom-in"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- End Team Member -->
-
-            <div
-              class="col-xl-3 col-lg-4 col-md-6 col-sm-6"
-              data-aos="fade-up"
-              data-aos-delay="250"
-            >
-              <div
-                class="team-portrait-card"
-                data-index="3"
-                data-name="Hanif Wisanggeni Prabowo"
-                data-role="Back End Developer"
-                data-img="assets/img/teams/4.png"
-                tabindex="0"
-                role="button"
-                aria-label="Lihat foto Hanif Wisanggeni Prabowo"
-              >
-                <div class="team-portrait-img">
-                  <img
-                    src="assets/img/teams/4.png"
-                    alt="Hanif Wisanggeni Prabowo - Back End Developer"
-                    loading="lazy"
-                  />
-                  <div class="team-portrait-overlay">
-                    <h4>Hanif Wisanggeni Prabowo</h4>
-                    <span>Back End Developer</span>
-                  </div>
-                  <div class="team-portrait-zoom">
-                    <i class="bi bi-zoom-in"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- End Team Member -->
-
-            <div
-              class="col-xl-3 col-lg-4 col-md-6 col-sm-6"
-              data-aos="fade-up"
-              data-aos-delay="300"
-            >
-              <div
-                class="team-portrait-card"
-                data-index="4"
-                data-name="Naufal Daffa Bayu Putra.T"
-                data-role="Digital Marketer"
-                data-img="assets/img/teams/5.png"
-                tabindex="0"
-                role="button"
-                aria-label="Lihat foto Naufal Daffa Bayu Putra.T"
-              >
-                <div class="team-portrait-img">
-                  <img
-                    src="assets/img/teams/5.png"
-                    alt="Naufal Daffa Bayu Putra.T - Digital Marketer"
-                    loading="lazy"
-                  />
-                  <div class="team-portrait-overlay">
-                    <h4>Naufal Daffa Bayu Putra.T</h4>
-                    <span>Digital Marketer</span>
-                  </div>
-                  <div class="team-portrait-zoom">
-                    <i class="bi bi-zoom-in"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- End Team Member -->
           </div>
         </div>
-      </section>
-      <!-- End Team Section -->
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+  </div>
+</section>
+<!-- End Team Section -->
 
-      <!-- Team Lightbox Popup -->
-      <div id="teamLightbox" class="team-lightbox" aria-hidden="true">
-        <div class="team-lightbox-backdrop"></div>
-        <button class="team-lightbox-close" aria-label="Tutup popup">
-          <i class="bi bi-x-lg"></i>
-        </button>
-        <button class="team-lightbox-nav prev" aria-label="Foto sebelumnya">
-          <i class="bi bi-chevron-left"></i>
-        </button>
-        <button class="team-lightbox-nav next" aria-label="Foto berikutnya">
-          <i class="bi bi-chevron-right"></i>
-        </button>
-        <div class="team-lightbox-content">
-          <img src="" alt="" id="teamLightboxImg" draggable="false" />
-          <div class="team-lightbox-caption">
-            <h4 id="teamLightboxName"></h4>
-            <span id="teamLightboxRole"></span>
-            <div class="team-lightbox-counter" id="teamLightboxCounter"></div>
-          </div>
+<!-- Team Lightbox Popup (tetap untuk view besar, bisa dipanggil dari flip back) -->
+<div id="teamLightbox" class="team-lightbox" aria-hidden="true">
+  <div class="team-lightbox-backdrop"></div>
+  <button class="team-lightbox-close" aria-label="Tutup popup"><i class="bi bi-x-lg"></i></button>
+  <button class="team-lightbox-nav prev" aria-label="Foto sebelumnya"><i class="bi bi-chevron-left"></i></button>
+  <button class="team-lightbox-nav next" aria-label="Foto berikutnya"><i class="bi bi-chevron-right"></i></button>
+  <div class="team-lightbox-content">
+    <img src="" alt="" id="teamLightboxImg" draggable="false" />
+    <div class="team-lightbox-caption">
+      <h4 id="teamLightboxName"></h4>
+      <span id="teamLightboxRole"></span>
+      <div class="team-lightbox-counter" id="teamLightboxCounter"></div>
+    </div>
+  </div>
+  <div class="team-lightbox-hint"><i class="bi bi-arrows"></i> swipe / geser untuk ganti foto</div>
+</div>

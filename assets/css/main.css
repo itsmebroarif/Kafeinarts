@@ -2298,6 +2298,168 @@ body.team-lightbox-open {
   row-gap: 1.5rem;
 }
 
+/*--------------------------------------------------------------
+# Team Swiper - Satu Row Slider (Bootstrap/Swiper)
+--------------------------------------------------------------*/
+.team-swiper {
+  padding: 20px 10px 60px;
+  overflow: hidden;
+}
+.team-swiper .swiper-slide {
+  height: auto;
+  display: flex;
+  justify-content: center;
+}
+.team-swiper .swiper-pagination {
+  bottom: 12px;
+}
+.team-swiper .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background: color-mix(in srgb, var(--accent-color), transparent 60%);
+  opacity: 1;
+  transition: background 0.3s, transform 0.3s;
+}
+.team-swiper .swiper-pagination-bullet-active {
+  background: var(--accent-color);
+  transform: scale(1.25);
+}
+.team-swiper .swiper-button-next,
+.team-swiper .swiper-button-prev {
+  width: 44px;
+  height: 44px;
+  background: var(--surface-color);
+  border: 1px solid color-mix(in srgb, var(--accent-color), transparent 80%);
+  border-radius: 50%;
+  color: var(--accent-color);
+  box-shadow: 0 4px 14px rgba(0, 32, 93, 0.12);
+  transition: background 0.3s, color 0.3s, transform 0.3s, box-shadow 0.3s;
+  top: 42%;
+}
+.team-swiper .swiper-button-next:after,
+.team-swiper .swiper-button-prev:after {
+  font-size: 18px;
+  font-weight: 700;
+}
+.team-swiper .swiper-button-next:hover,
+.team-swiper .swiper-button-prev:hover {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  transform: scale(1.06);
+  box-shadow: 0 8px 24px rgba(0, 32, 93, 0.22);
+}
+@media (max-width: 768px) {
+  .team-swiper { padding: 14px 0 50px; }
+  .team-swiper .swiper-button-next,
+  .team-swiper .swiper-button-prev { display: none; }
+}
+
+/*--------------------------------------------------------------
+# Team Flip Card - Hover Glow & Flip Rapih
+--------------------------------------------------------------*/
+.flip-card {
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 3 / 4;
+  perspective: 1200px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.72s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 18px;
+  overflow: hidden;
+}
+.flip-card-front {
+  background: color-mix(in srgb, var(--heading-color), transparent 90%);
+}
+.flip-card-back {
+  background: linear-gradient(135deg, #00205D 0%, #12367a 100%);
+  color: #ffffff;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 28px 20px;
+  gap: 10px;
+  box-shadow: 0 8px 28px rgba(0, 32, 93, 0.22);
+}
+.flip-card-back h4 {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.2;
+}
+.flip-card-back span {
+  color: #E8DCC6;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+.flip-card-back p {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 13.5px;
+  line-height: 1.6;
+  margin: 10px 0 14px;
+}
+.flip-card-back .btn-flip-close {
+  background: #ffffff;
+  color: #00205D;
+  border: none;
+  border-radius: 50px;
+  padding: 8px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+.flip-card-back .btn-flip-close:hover {
+  background: #E8DCC6;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+}
+/* Glow saat hover - hanya di front, tidak mengganggu flip */
+.flip-card:hover .flip-card-front {
+  box-shadow:
+    0 0 0 3px rgba(0, 32, 93, 0.10),
+    0 12px 32px rgba(0, 32, 93, 0.22),
+    0 0 36px rgba(0, 32, 93, 0.18),
+    0 4px 18px rgba(0, 0, 0, 0.12);
+}
+.flip-card:hover .flip-card-front .team-portrait-img {
+  transform: translateY(-2px);
+}
+.flip-card .team-portrait-img {
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  height: 100%;
+}
+@media (max-width: 576px) {
+  .flip-card { max-width: 280px; }
+}
+
 
 /*--------------------------------------------------------------
 # Pricing Section

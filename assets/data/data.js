@@ -198,6 +198,7 @@ const siteData = {
         role: "Chief Executive Officer",
         img: "assets/img/teams/1.png",
         alt: "Fahrul Saputra - Chief Executive Officer",
+        bio: "Memimpin visi & strategi Kafeinarts dengan fokus pada inovasi produk SaaS yang berdampak.",
         delay: 100,
       },
       {
@@ -205,6 +206,7 @@ const siteData = {
         role: "Supervisor System Developer",
         img: "assets/img/teams/2.png",
         alt: "Arif Permana Putrasuryana - Supervisor System Developer",
+        bio: "Mengawal arsitektur sistem & kualitas kode untuk performa aplikasi yang skalabel.",
         delay: 150,
       },
       {
@@ -212,6 +214,7 @@ const siteData = {
         role: "Digital Marketer",
         img: "assets/img/teams/3.png",
         alt: "Arief Ramadhan Al-Hazmi - Digital Marketer",
+        bio: "Merancang strategi pemasaran digital yang kreatif untuk pertumbuhan brand & akuisisi pengguna.",
         delay: 200,
       },
       {
@@ -219,6 +222,7 @@ const siteData = {
         role: "Back End Developer",
         img: "assets/img/teams/4.png",
         alt: "Hanif Wisanggeni Prabowo - Back End Developer",
+        bio: "Membangun fondasi backend yang tangguh, aman, dan efisien untuk operasional harian.",
         delay: 250,
       },
       {
@@ -226,6 +230,7 @@ const siteData = {
         role: "Digital Marketer",
         img: "assets/img/teams/5.png",
         alt: "Naufal Daffa Bayu Putra.T - Digital Marketer",
+        bio: "Mengelola kampanye & analitik untuk meningkatkan engagement dan konversi pelanggan.",
         delay: 300,
       },
     ],
