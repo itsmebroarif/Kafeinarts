@@ -138,7 +138,7 @@ Landing page terdiri dari **9 section utama** + **header/footer**. Semua section
 - **Anggota (update terbaru):**
   1. **Fahrul Saputra** — Chief Executive Officer (`1.png`)
   2. **Arif Permana Putrasuryana** — Supervisor System Developer (`2.png`)
-  3. **Arief Ramadhan** — Digital Marketer (`3.png`) _(data-card: William Anderson/CTO)_
+  3. **Arief Ramadhan Al-Hazmi** — Digital Marketer (`3.png`) _(data-card: William Anderson/CTO)_
   4. **Hanif Wisanggeni Prabowo** — Back End Developer (`4.png`)
   5. **Naufal Daffa Bayu Putra.T** — Digital Marketer / Lead Developer (`5.png`)
 - **Popup Lightbox** (`#teamLightbox`):
@@ -250,7 +250,7 @@ Kolaborasi pengembangan ini dikerjakan oleh:
 | **Mahabbatul Auliya** | [@mhbbtuliyaa](https://github.com/mhbbtuliyaa) | Frontend & Layouting |
 | **Fahrul Saputra** | — | Chief Executive Officer (konten tim) |
 | **Hanif Wisanggeni P.** | — | Back End Developer |
-| **Arief Ramadhan** | — | Digital Marketer |
+| **Arief Ramadhan Al-Hazmi** | — | Digital Marketer |
 | **Naufal Daffa Bayu P.** | — | Digital Marketer |
 
 ---

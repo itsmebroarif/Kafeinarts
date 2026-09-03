@@ -208,10 +208,10 @@ const siteData = {
         delay: 150,
       },
       {
-        name: "Arief Ramadhan",
+        name: "Arief Ramadhan Al-Hazmi",
         role: "Digital Marketer",
         img: "assets/img/teams/3.png",
-        alt: "Arief Ramadhan - Digital Marketer",
+        alt: "Arief Ramadhan Al-Hazmi - Digital Marketer",
         delay: 200,
       },
       {
