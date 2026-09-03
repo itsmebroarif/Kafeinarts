@@ -512,6 +512,8 @@
     }
 
     teamCards.forEach((card, i) => {
+      // Flip-card sudah punya handler flip sendiri, jangan buka lightbox langsung
+      if (card.classList.contains("flip-card")) return;
       card.addEventListener("click", () => openLightbox(i));
       card.addEventListener("keydown", (e) => {
         if (e.key === "Enter" || e.key === " ") {
