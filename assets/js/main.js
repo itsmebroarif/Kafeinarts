@@ -229,4 +229,180 @@
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
 
+  /**
+   * Team Portrait Lightbox - click popup + swipe / tap navigation
+   */
+  const teamCards = document.querySelectorAll('.team-portrait-card');
+  const teamLightbox = document.getElementById('teamLightbox');
+  if (teamCards.length && teamLightbox) {
+    const lbImg = document.getElementById('teamLightboxImg');
+    const lbName = document.getElementById('teamLightboxName');
+    const lbRole = document.getElementById('teamLightboxRole');
+    const lbCounter = document.getElementById('teamLightboxCounter');
+    const lbBackdrop = teamLightbox.querySelector('.team-lightbox-backdrop');
+    const lbClose = teamLightbox.querySelector('.team-lightbox-close');
+    const lbPrev = teamLightbox.querySelector('.team-lightbox-nav.prev');
+    const lbNext = teamLightbox.querySelector('.team-lightbox-nav.next');
+    const lbContent = teamLightbox.querySelector('.team-lightbox-content');
+
+    // Build ordered data from cards
+    const teamData = Array.from(teamCards).map(card => ({
+      src: card.getAttribute('data-img') || card.querySelector('img')?.getAttribute('src') || '',
+      name: card.getAttribute('data-name') || card.querySelector('h4')?.textContent?.trim() || '',
+      role: card.getAttribute('data-role') || card.querySelector('span')?.textContent?.trim() || '',
+      alt: card.querySelector('img')?.getAttribute('alt') || ''
+    }));
+
+    let current = 0;
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchEndX = 0;
+    let touchEndY = 0;
+
+    function updateLightbox(index, withAnim = true) {
+      if (index < 0) index = teamData.length - 1;
+      if (index >= teamData.length) index = 0;
+      current = index;
+      const d = teamData[current];
+      if (withAnim && lbImg) {
+        lbImg.style.opacity = '0';
+        lbImg.style.transform = 'scale(0.98)';
+        setTimeout(() => {
+          lbImg.src = d.src;
+          lbImg.alt = d.alt || `${d.name} - ${d.role}`;
+          lbName.textContent = d.name;
+          lbRole.textContent = d.role;
+          lbCounter.textContent = (current + 1) + ' / ' + teamData.length;
+          lbImg.onload = () => {
+            lbImg.style.opacity = '1';
+            lbImg.style.transform = 'scale(1)';
+          };
+          // fallback if cached
+          if (lbImg.complete) {
+            lbImg.style.opacity = '1';
+            lbImg.style.transform = 'scale(1)';
+          }
+        }, 140);
+      } else {
+        lbImg.src = d.src;
+        lbImg.alt = d.alt || `${d.name} - ${d.role}`;
+        lbName.textContent = d.name;
+        lbRole.textContent = d.role;
+        lbCounter.textContent = (current + 1) + ' / ' + teamData.length;
+      }
+    }
+
+    function openLightbox(index) {
+      updateLightbox(index, false);
+      teamLightbox.classList.add('active');
+      teamLightbox.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('team-lightbox-open');
+      // trap focus to close button for accessibility
+      if (lbClose) lbClose.focus({ preventScroll: true });
+    }
+
+    function closeLightbox() {
+      teamLightbox.classList.remove('active');
+      teamLightbox.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('team-lightbox-open');
+      // return focus to current card
+      const activeCard = teamCards[current];
+      if (activeCard) activeCard.focus({ preventScroll: true });
+    }
+
+    function next() { updateLightbox(current + 1); }
+    function prev() { updateLightbox(current - 1); }
+
+    teamCards.forEach((card, i) => {
+      card.addEventListener('click', () => openLightbox(i));
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openLightbox(i);
+        }
+      });
+    });
+
+    if (lbClose) lbClose.addEventListener('click', closeLightbox);
+    if (lbBackdrop) lbBackdrop.addEventListener('click', closeLightbox);
+    if (lbNext) lbNext.addEventListener('click', (e) => { e.stopPropagation(); next(); });
+    if (lbPrev) lbPrev.addEventListener('click', (e) => { e.stopPropagation(); prev(); });
+
+    // Keyboard: Esc, ArrowLeft, ArrowRight
+    document.addEventListener('keydown', (e) => {
+      if (!teamLightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') next();
+      if (e.key === 'ArrowLeft') prev();
+    });
+
+    // Click on image -> next (tap to navigate)
+    if (lbImg) {
+      lbImg.addEventListener('click', (e) => {
+        // avoid if user dragged
+        e.stopPropagation();
+        next();
+      });
+      lbImg.style.cursor = 'pointer';
+      lbImg.title = 'Klik untuk foto berikutnya';
+    }
+
+    // Swipe handling on lightbox content / backdrop
+    const swipeTarget = lbContent || teamLightbox;
+    swipeTarget.addEventListener('touchstart', (e) => {
+      if (!teamLightbox.classList.contains('active')) return;
+      const t = e.changedTouches[0];
+      touchStartX = t.clientX;
+      touchStartY = t.clientY;
+    }, { passive: true });
+
+    swipeTarget.addEventListener('touchend', (e) => {
+      if (!teamLightbox.classList.contains('active')) return;
+      const t = e.changedTouches[0];
+      touchEndX = t.clientX;
+      touchEndY = t.clientY;
+      const dx = touchEndX - touchStartX;
+      const dy = touchEndY - touchStartY;
+      const absDx = Math.abs(dx);
+      const absDy = Math.abs(dy);
+      // horizontal swipe threshold 45px and horizontal > vertical
+      if (absDx > 45 && absDx > absDy) {
+        if (dx < 0) next(); else prev();
+      } else if (absDy > 120 && absDy > absDx) {
+        // swipe down to close (optional)
+        if (dy > 0) closeLightbox();
+      }
+    }, { passive: true });
+
+    // Mouse drag simulation for desktop swipe
+    let isDown = false;
+    let startX = 0;
+    swipeTarget.addEventListener('mousedown', (e) => {
+      if (!teamLightbox.classList.contains('active')) return;
+      isDown = true;
+      startX = e.clientX;
+      swipeTarget.style.cursor = 'grabbing';
+    });
+    swipeTarget.addEventListener('mouseup', (e) => {
+      if (!isDown) return;
+      isDown = false;
+      swipeTarget.style.cursor = '';
+      const dx = e.clientX - startX;
+      if (Math.abs(dx) > 60) {
+        if (dx < 0) next(); else prev();
+      }
+    });
+    swipeTarget.addEventListener('mouseleave', () => {
+      isDown = false;
+      swipeTarget.style.cursor = '';
+    });
+
+    // Prevent scroll propagation when lightbox open
+    teamLightbox.addEventListener('wheel', (e) => {
+      if (teamLightbox.classList.contains('active')) {
+        e.preventDefault();
+      }
+    }, { passive: false });
+  }
+
 })();
