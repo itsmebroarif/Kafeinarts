@@ -248,21 +248,22 @@ h6 {
   }
 }
 
-/* Index Page Header - Flat solid (tidak transparan)
+/* Index Page Header - Transparan di atas
 ------------------------------*/
 .index-page .header {
-  --background-color: #00205D;
+  --background-color: rgba(255, 255, 255, 0);
   --heading-color: #ffffff;
   --nav-color: #ffffff;
-  background-color: #00205D;
+  background-color: transparent;
+  box-shadow: none;
 }
 
-/* Index Page Header on Scroll - tetap flat solid #00205D
+/* Index Page Header on Scroll - solid #00205D
 ------------------------------*/
 .index-page.scrolled .header {
   --background-color: #00205D;
   background-color: #00205D;
-  box-shadow: none;
+  box-shadow: 0 2px 20px rgba(0, 32, 93, 0.18);
 }
 
 /*--------------------------------------------------------------
@@ -421,6 +422,25 @@ h6 {
   .navmenu .dd-box-shadow {
     box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
   }
+
+  /* Active link underline - desktop */
+  .navmenu a.active,
+  .navmenu .active:focus {
+    color: var(--contrast-color) !important;
+    text-decoration: underline;
+    text-underline-offset: 7px;
+    text-decoration-thickness: 2.5px;
+    text-decoration-color: var(--contrast-color);
+    text-decoration-skip-ink: none;
+  }
+}
+
+/* Active link underline - global fallback */
+.navmenu a.active {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 2px;
+  text-decoration-color: currentColor;
 }
 
 /* Mobile Navigation */
