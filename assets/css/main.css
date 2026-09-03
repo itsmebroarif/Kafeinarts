@@ -162,20 +162,58 @@ h6 {
   max-height: var(--logo-img-height, 46px);
   height: var(--logo-img-height, 46px);
   width: auto;
-  margin-right: 10px;
+  margin-right: 12px;
   object-fit: contain;
-  transition: max-height 0.3s ease, height 0.3s ease;
+  transition: max-height 0.3s ease, height 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.header .logo img.logo-img-elegant {
+  background: #ffffff;
+  border-radius: 50%;
+  padding: 6px;
+  border: 1.5px solid rgba(255, 255, 255, 0.95);
+  box-shadow:
+    0 2px 10px rgba(0, 0, 0, 0.18),
+    0 0 0 3px rgba(255, 255, 255, 0.08);
+  object-fit: contain;
+  aspect-ratio: 1 / 1;
+  width: var(--logo-img-height, 46px);
+  height: var(--logo-img-height, 46px);
+}
+
+.header .logo:hover img.logo-img-elegant {
+  transform: scale(1.04) rotate(-2deg);
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.22),
+    0 0 0 4px rgba(255, 255, 255, 0.12),
+    0 0 20px rgba(255, 255, 255, 0.18);
 }
 
 .header .logo h1 {
-  font-size: var(--logo-size, 34px);
+  font-size: var(--logo-size, 32px);
   margin: 0;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--heading-color);
-  letter-spacing: 2px;
+  letter-spacing: 3px;
   text-transform: uppercase;
   line-height: 1;
-  transition: font-size 0.3s ease;
+  transition: font-size 0.3s ease, letter-spacing 0.3s ease;
+  font-family: var(--heading-font);
+  display: flex;
+  align-items: baseline;
+  gap: 0;
+}
+
+.header .logo h1 span {
+  font-weight: 300;
+  letter-spacing: 4px;
+  color: #E8DCC6;
+  /* elegan gold-champagne - kontras lembut di navy #00205D */
+  margin-left: 1px;
+}
+
+.header .logo:hover h1 {
+  letter-spacing: 3.5px;
 }
 
 @media (max-width: 768px) {
